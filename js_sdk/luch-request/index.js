@@ -47,7 +47,7 @@ http.interceptor.request((config, cancel) => { /* 请求之前拦截器 */
 	try {
 		let token = uni.getStorageSync('userInfo');
 		if (token) {
-			config.header.token = token
+			config.header.token = token.access_token
 		}
 	} catch (e) {
 		// error
@@ -127,7 +127,6 @@ async function getAuth(loginRes) {
 							key: 'userInfo',
 							data: token
 						})
-						console.log('重新登录成功！')
 						resolve(loginRes);
 					}
 				}

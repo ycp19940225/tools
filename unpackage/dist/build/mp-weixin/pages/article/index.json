@@ -1,8 +1,0 @@
-{
-  "navigationBarTitleText": "文章分类",
-  "disableScroll": false,
-  "usingComponents": {
-    "mix-pulldown-refresh": "/components/mix-pulldown-refresh/mix-pulldown-refresh",
-    "mix-load-more": "/components/mix-load-more/mix-load-more"
-  }
-}

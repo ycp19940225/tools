@@ -1,9 +1,6 @@
 import Vue from 'vue'
 import store from './store'
 import App from './App'
-import mixin from 'js_sdk/tools/share.js'
-import {showLoading, hideLoading} from 'js_sdk/tools/tool.js'
-
 
 
 
@@ -12,21 +9,12 @@ import Json from './Json' //测试用数据
 Vue.config.productionTip = false
 
 
-//每日抽奖
-import draw from './pages/draw/index.vue'
-Vue.component('draw', draw);
 
-//会员
-import member from './pages/member/center.vue'
-Vue.component('member', member);
-
-//积分商城
-import basics from './pages/basics/index.vue'
-Vue.component('basics', basics);
 
 //首页
-import user from './pages/user/user.vue'
-Vue.component('user',user);
+import basics from './pages/basics/index.vue'
+Vue.component('basics',basics);
+
 
 
 //商城js
@@ -72,14 +60,10 @@ import { http } from '@/js_sdk/luch-request/index.js' // 全局挂载引入，�
 Vue.config.productionTip = false
 Vue.prototype.$fire = new Vue();
 Vue.prototype.$store = store;
-Vue.prototype.$tool = {showLoading, hideLoading};
 Vue.prototype.$api = {msg, json, prePage};
 Vue.prototype.mapSecret = '0cc44eb70a945ab36ee445909dac6536';
 Vue.prototype.$http = http
 // Vue.prototype.httpUrl = 'http://www.lite_app.com'
-
-//分享
-Vue.mixin(mixin)
 
 
 App.mpType = 'app'

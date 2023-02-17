@@ -1,92 +1,16 @@
 {
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
-	
 	{
 		"path": "pages/index/index",
 		"style": {
-			"navigationBarTitleText": "实用工具集合",
+			"navigationBarTitleText": "实用工具集",
 			"disableScroll": false, // 禁止滚动, 解决scroll-view在Android小程序卡顿的问题
 			"app-plus": {
 				"bounce": "none" // 取消iOS回弹,避免和下拉刷新冲突 (小程序无法取消, 点此查看H5端的取消方法... )
 			}
 		}
 	},
-	{
-		"path": "pages/money/goods_pay3",
-		"style": {
-			"navigationBarTitleText": "奖品领取"
-		}
-	},
-	{
-		"path": "pages/order/createOrder3",
-		"style": {
-			"navigationBarTitleText": "创建奖品订单"
-		}
-	},
-	{
-		"path": "pages/money/goods_pay2",
-		"style": {
-			"navigationBarTitleText": "VIP商品领取"
-		}
-	},
-	{
-		"path": "pages/order/createOrder2",
-		"style": {
-			"navigationBarTitleText": "创建订单"
-		}
-	},
-	{
-		"path": "pages/money/vip_pay",
-		"style": {
-			"navigationBarTitleText": "会员开通"
-		}
-	},
-	{
-		"path": "pages/member/center",
-		"style": {
-			"navigationBarTitleText": "会员礼品专区"
-		}
-	},
-	{
-		"path": "pages/user/sign",
-		"style": {
-			"navigationBarTitleText": "每日签到"
-		}
-	},
-	{
-		"path": "pages/member/info",
-		"style": {
-			"navigationBarTitleText": "积分等级"
-		}
-	},
-	{
-		"path": "pages/member/index",
-		"style": {
-			"navigationBarTitleText": "我的积分与等级"
-		}
-	},
 	
-	{
-		"path": "pages/money/card_pay",
-		"style": {
-			"navigationBarTitleText": "储值卡充值"
-		}
-	},
-	{
-		"path": "pages/coupons/get",
-		"style": {
-			"navigationBarTitleText": "余额/优惠券兑换"
-		}
-	},
-		
-		{
-			"path": "pages/money/pay",
-			"style": {
-				"navigationBarTitleText": "支付"
-			}
-		},
-		
-		
 		{
 			"path": "pages/article/index",
 			"style": {
@@ -98,150 +22,23 @@
 			}
 		},
 		{
-			"path": "pages/money/goods_pay",
+			"path": "pages/article/details",
 			"style": {
-				"navigationBarTitleText": "商品兑换"
+				"navigationBarTitleText": "文章详情"
 			}
 		},
 		{
-			"path": "pages/order/goods_order",
+			"path": "pages/article/videoDetails",
 			"style": {
-				"navigationBarTitleText": "商品订单"
-			}
-		},
-		{
-			"path": "pages/category/category",
-			"style": {
-				"navigationBarTitleText": "商品分类",
-				"app-plus": {
-					"bounce": "none"
-				}
-			}
-		},
-		{
-			"path": "pages/commit/index",
-			"style": {
-				"navigationBarTitleText": "订单填写"
-			}
-		},
-		{
-			"path": "pages/commit/goods_attr",
-			"style": {
-				"navigationBarTitleText": "装备尺码"
-			}
-		},
-		{
-			"path": "pages/coupons/list",
-			"style": {
-				"navigationBarTitleText": "我的优惠券"
-			}
-		},
-		{
-			"path": "pages/draw/index",
-			"style": {
-				"navigationBarTitleText": "每日抽奖"
-			}
-		},
-		{
-			"path": "pages/address/address",
-			"style": {
-				"navigationBarTitleText": "收货地址"
-			}
-		}, {
-			"path": "pages/address/addressManage",
-			"style": {
-				"navigationBarTitleText": ""
-			}
-		},
-		{
-			"path": "pages/product/product",
-			"style": {
-				"navigationBarTitleText": "商品详情",
-				"app-plus": {
-					"titleNView": {
-						"type": "transparent"
-					}
-				}
-			}
-		},
-		{
-			"path": "pages/user/auth",
-			"style": {
-				"navigationBarTitleText": "微信授权"
-			}
-		},
-		{
-			"path": "pages/product/index",
-			"style": {
-				"navigationBarTitleText": "产品详情"
-			}
-		},
-		{
-			"path": "pages/set/set",
-			"style": {
-				"navigationBarTitleText": "设置"
-			}
-		},
-		 {
-			"path": "pages/public/login",
-			"style": {
-				"navigationBarTitleText": "",
-				"navigationStyle": "custom",
-				"app-plus": {
-					"titleNView": false,
-					"animationType": "slide-in-bottom"
-				}
-			}
-		}, {
-			"path": "pages/user/user",
-			"style": {
-				"navigationBarTitleText": "我的",
-				// #ifdef MP
-				"navigationStyle": "custom",
-				// #endif
-				"app-plus": {
-					"bounce": "none",
-					"titleNView": {
-						"type": "transparent",
-						"buttons": [{
-								"fontSrc": "/static/yticon.ttf",
-								"text": "\ue60f",
-								"fontSize": "24",
-								"color": "#303133",
-								"width": "46px",
-								"background": "rgba(0,0,0,0)"
-							},
-							{
-								"fontSrc": "/static/yticon.ttf",
-								"text": "\ue744",
-								"fontSize": "28",
-								"color": "#303133",
-								"background": "rgba(0,0,0,0)",
-								"redDot": true
-							}
-						]
-					}
-				}
-			}
-		}, {
-			"path": "pages/money/money",
-			"style": {}
-		}, {
-			"path": "pages/order/createOrder",
-			"style": {
-				"navigationBarTitleText": "创建订单"
-			}
-		},
-		{
-			"path": "pages/money/paySuccess",
-			"style": {
-				"navigationBarTitleText": "支付成功"
+				"navigationBarTitleText": "视频详情"
 			}
 		}
+
+		
 	],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "玖和鲜果",
+		"navigationBarTitleText": "实用工具集",
 		"navigationBarBackgroundColor": "#F8F8F8",
 		"backgroundColor": "#F8F8F8"
 	},

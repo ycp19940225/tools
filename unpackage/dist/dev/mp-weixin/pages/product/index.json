@@ -1,7 +1,0 @@
-{
-  "navigationBarTitleText": "产品详情",
-  "usingComponents": {
-    "swiper": "/components/colorui/components/swiper",
-    "u-parse": "/components/gaoyia-parse/parse"
-  }
-}

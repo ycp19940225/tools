@@ -1,12 +1,7 @@
 
 .mix-refresh-content{
-	display: -webkit-box;
-	display: -webkit-flex;
 	display: flex;
-	-webkit-box-orient: vertical;
-	-webkit-box-direction: normal;
-	-webkit-flex-direction: column;
-	        flex-direction: column;
+	flex-direction: column;
 	position: relative;
 }
 /* 下拉刷新部分 */
@@ -16,21 +11,14 @@
 	top: 0;
 	-webkit-transform: translateY(-100%);
 	        transform: translateY(-100%);
-	display: -webkit-box;
-	display: -webkit-flex;
 	display: flex;
-	-webkit-box-pack: center;
-	-webkit-justify-content: center;
-	        justify-content: center;
-	-webkit-box-align: center;
-	-webkit-align-items: center;
-	        align-items: center;
+	justify-content: center;
+	align-items: center;
 	width: 100%;
 }
 .mix-loading-icon{
 	width: 70rpx;
 	height: 70rpx;
-	-webkit-transition: .3s;
 	transition: .3s;
 }
 .mix-loading-icon.ready{

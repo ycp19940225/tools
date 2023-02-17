@@ -1,8 +1,6 @@
 {
-  "component": true,
   "usingComponents": {
-    "mescroll-uni": "/components/mescroll-uni/mescroll-uni",
-    "swiper": "/components/colorui/components/swiper",
-    "uni-countdown": "/components/uni-countdown/uni-countdown"
-  }
+    "swiper": "/components/colorui/components/swiper"
+  },
+  "component": true
 }

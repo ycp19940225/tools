@@ -15,7 +15,7 @@
 	-webkit-user-select:none;
 	        user-select:none;
 	width: 100%;
-	font-family: Helvetica, "PingFangSC", 'Microsoft Yahei', '\5FAE\8F6F\96C5\9ED1', Arial, sans-serif;
+	font-family: Helvetica, "PingFangSC", 'Microsoft Yahei', '微软雅黑', Arial, sans-serif;
 	color: #333;
 	line-height: 1.5;
 	font-size: 1em;
@@ -153,7 +153,7 @@
 .wxParse .blockquote {
   margin: 10rpx 0;
   padding: 22rpx 0 22rpx 22rpx;
-  font-family: Courier, Calibri, "\5B8B\4F53";
+  font-family: Courier, Calibri, "宋体";
   background: #f5f5f5;
   border-left: 6rpx solid #dbdbdb;
 }
@@ -173,16 +173,12 @@
 }
 .wxParse .ol>weixin-parse-template,.wxParse .ul>weixin-parse-template {
   display: list-item;
-  -webkit-box-align: baseline;
-  -webkit-align-items: baseline;
-          align-items: baseline;
+  align-items: baseline;
   text-align: match-parent;
 }
 .wxParse .ol>.li,.wxParse .ul>.li {
   display: list-item;
-  -webkit-box-align: baseline;
-  -webkit-align-items: baseline;
-          align-items: baseline;
+  align-items: baseline;
   text-align: match-parent;
 }
 .wxParse .ul .ul, .wxParse .ol .ul {

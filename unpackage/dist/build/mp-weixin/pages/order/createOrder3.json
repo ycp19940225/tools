@@ -1,6 +1,0 @@
-{
-  "navigationBarTitleText": "创建奖品订单",
-  "usingComponents": {
-    "uni-number-box": "/components/uni-number-box/uni-number-box"
-  }
-}

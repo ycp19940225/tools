@@ -5,14 +5,16 @@
   },
   "setting": {
     "urlCheck": true,
-    "minified": true,
+    "es6": true,
     "postcss": true,
-    "es6": false
+    "minified": true,
+    "newFeature": true,
+    "bigPackageSizeSupport": true
   },
   "compileType": "miniprogram",
-  "libVersion": "2.9.2",
+  "libVersion": "",
   "appid": "wx82a786d689c0fc97",
-  "projectname": "lite_fruit_ad",
+  "projectname": "高加索国际",
   "condition": {
     "search": {
       "current": -1,

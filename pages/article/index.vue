@@ -41,9 +41,6 @@
 									:class="['img-wrapper', 'img-wrapper'+item.type, item.images.length === 1 && item.type===3 ? 'img-wrapper-single': '']"
 								>
 									<image class="img" :src="imgItem"></image>
-									<view class="video-tip" v-if="item.videoSrc">
-										<image class="video-tip-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAEC0lEQVRoQ+2ajVEVMRDHdzuwA6ACpQKxArECtQKxAqECoQKhAqECoQKxAqEDrWCdn7Nx8vJy+bp3T4YhM2+O8S7J/rO7//2IKo9k6CPBIU9Acpo0s10ReSkiPA8mtH0tIncicqOqPDcyZmvEhX8rIu8cQI9gtyJyKSIXc0ENA3EAnxxAj/BT356LyEdV/TWyWDcQM3smIgA4mtjwXkQ4aX4Mngj3QkSYy5PfTmb+laoeLg7EzBDga8aEEB4TOVfVAKAoj2sUc+QXQC0PxMzY8Esi3W8ROVbV05FTDHPMDC1AEBzEcqY1AeLMQQxtXANuZvjMa/cb/i6Oqo9kQKCFI1WtLl7bfOq9mUHd3/w9ND1F5f+WKAJxn/gebQiIg1Y/mAEEUsDX8J0zVZ0iljoQZydAYLuMrYCIwXOQrYc2qREzw4E/RAu/X9KcRrUX5mWBODX+jBY/UdXjuZuNznd5PnscepNjtikgODJpRzCp3VFaHBU+MTEOkSDMIJ0hFKyMNSAZbZA2NMUJn7ujqjebABDWyDDnXpqb5YDEvnGvqsHZi7I5CMgBxiHDxRx5bmSYGZlyyADWmCwHBN8IwjdRH5Im3B+En5UIJuYFBeMnjFtV3Y/frwDJmNV+K/1NAGEvIv+pqp7MUU1GthXzSoHE+VSzWRU0EsuOaUDhw+aWmNdKOEiBxOzQlYkWNJIqAiAI0V0dmhkZNvkXYyUkpEDYhFJ17cOaWXQACUtxaPhgc9JpZvFBr+Rg/xNI8B+0w0lXR0LDzUCIoE0bNPpISdC1uJD7uJQVlzTyEIFQgFGhMpo10pVfDfgIwlAiU9s0af4h+gglARkE8WURZ98G/V65Fhal3zgg3qnqXpVK/IMG0/rhAOYExDh9KgZEcqy4DtlEirKpTgutqLjsnk5RnEaLWeaUhiY0srFOS1KxrqVPtTS+2by8xsdsnkONNN5G0pDCQcVmtcaoLYVVV63e0zDo8L+0OVgvrNy84lIXemRiM022CtjynWsabVCwMdpKXQeSOlZXcGwRsPWbJAgyLZvOPOh2UKZWn6xYS0Dibl/IVF+1VoytJ15wbqyCtmkwKdIZGnZZE+9tmbLI4mC8VRuDAG8xpo00sQFDi2iRJrabU2jGBYVVmbMKxJ0/dzfSXeGVzM3ZiRZt2tGsgmDdJiAFMGiHNPxijk+YGV1NsuHgD82aCB82A4lomdohvf8jrQm3s61XbzgzAMJtVXwWOPZhD7F0AXEwnBrqjzv1sRCACnfp/HvIdsNlTbiDn+pgDuVn3UCCxN4wA1Bods+xrr8R26/yuuuULh8p8D0nSzsTE8ldOZcAhttgKsUhAEM+Ujty1xIm1PJfOK7nCh/LM2xaNVDbfv8EZNsnXtvvDyrmF1FIBKIwAAAAAElFTkSuQmCC"></image>
-									</view>
 								</view>
 							</view>
 							<!-- 空图片占位 -->
@@ -63,7 +60,6 @@
 		
 	</view>
 </template>
-
 <script>
 	import json from '@/Json'
 	import mixPulldownRefresh from '@/components/mix-pulldown-refresh/mix-pulldown-refresh';
@@ -83,14 +79,7 @@
 			}
 		},
 		computed: {
-			advertNavUrl(){
-				let data = {
-					title: '测试跳转新闻详情',
-					author: '测试作者',
-					time: '2019-04-26 21:21'
-				}
-				return `/pages/article/details?data=${JSON.stringify(data)}`;
-			} 
+			
 		},
 		async onLoad() {
 			// 获取屏幕宽度
@@ -127,14 +116,32 @@
 			 */
 			//获取分类
 			loadTabbars(){
-				let tabList = json.tabList;
-				tabList.forEach(item=>{
-					item.newsList = [];
-					item.loadMoreStatus = 0;  //加载更多 0加载前，1加载中，2没有更多了
-					item.refreshing = 0;
+				let tabList;
+				var _this = this;
+				
+				this.$http.post('/api/content/getArticleCate', {}).then(res => {
+					console.log(res)
+					if (res.data.code != 1) {
+						uni.showToast({
+							title: res.data.info,
+							icon: 'none'
+						});
+					} else {
+						var data = res.data.data
+						tabList = data.navList;
+						tabList.forEach(item=>{
+							item.newsList = [];
+							item.loadMoreStatus = 0;  //加载更多 0加载前，1加载中，2没有更多了
+							item.refreshing = 0;
+						})
+						this.tabBars = tabList;
+						this.loadNewsList('add');
+						uni.hideLoading();
+					}
+				}).catch(err => {
+					console.log(err);
 				})
-				this.tabBars = tabList;
-				this.loadNewsList('add');
+				
 			},
 			//新闻列表
 			loadNewsList(type){
@@ -154,44 +161,63 @@
 				// #endif
 				
 				//setTimeout模拟异步请求数据
-				setTimeout(()=>{
-					let list = json.newsList;
-					list.sort((a,b)=>{
-						return Math.random() > .5 ? -1 : 1; //静态数据打乱顺序
-					})
-					if(type === 'refresh'){
-						tabItem.newsList = []; //刷新前清空数组
+				if(tabItem.pageNum == undefined){
+					tabItem.pageNum = 1;
+				}
+				let data = {
+					catId : tabItem.id,
+					pageNum:tabItem.pageNum
+				}
+				let list = [];
+				this.$http.post('/api/content/getArticleByCatId', data).then(res => {
+					console.log(res)
+					if (res.data.code != 1) {
+						uni.showToast({
+							title: res.data.info,
+							icon: 'none'
+						});
+					} else {
+						var data = res.data.data
+						list = data.articleList;
+						tabItem.totalSize = data.totalSize;
+						let pageSize = data.pageSize;
+						list.forEach(item=>{
+							// item.id = parseInt(Math.random() * 10000);
+							tabItem.newsList.push(item);
+						})
+						//下拉刷新 关闭刷新动画
+						if(type === 'refresh'){
+							this.$refs.mixPulldownRefresh && this.$refs.mixPulldownRefresh.endPulldownRefresh();
+							// #ifdef APP-PLUS
+							tabItem.refreshing = false;
+							// #endif
+							tabItem.loadMoreStatus = 0;
+						}
+						//上滑加载 处理状态
+						if(type === 'add'){
+							console.log(tabItem.pageNum , pageSize)
+							tabItem.loadMoreStatus =( tabItem.pageNum == pageSize ||  tabItem.pageNum > pageSize) ? 2: 0;
+						}
+						tabItem.pageNum++;
+						console.log(tabItem)
+						uni.hideLoading();
 					}
-					list.forEach(item=>{
-						item.id = parseInt(Math.random() * 10000);
-						tabItem.newsList.push(item);
-					})
-					//下拉刷新 关闭刷新动画
-					if(type === 'refresh'){
-						this.$refs.mixPulldownRefresh && this.$refs.mixPulldownRefresh.endPulldownRefresh();
-						// #ifdef APP-PLUS
-						tabItem.refreshing = false;
-						// #endif
-						tabItem.loadMoreStatus = 0;
-					}
-					//上滑加载 处理状态
-					if(type === 'add'){
-						tabItem.loadMoreStatus = tabItem.newsList.length > 40 ? 2: 0;
-					}
-				}, 600)
+				}).catch(err => {
+					console.log(err);
+				})
+				if(type === 'refresh'){
+					tabItem.newsList = []; //刷新前清空数组
+				}
 			},
 			//新闻详情
 			navToDetails(item){
 				let data = {
 					id: item.id,
-					title: item.title,
-					author: item.author,
-					time: item.time
 				}
 				let url = item.videoSrc ? 'videoDetails' : 'details'; 
 
 				uni.navigateTo({
-					url: `/pages/article/${url}?data=${JSON.stringify(data)}`
+					url: `/pages/article/${url}?id=` + item.id
 				})
 			},
 			

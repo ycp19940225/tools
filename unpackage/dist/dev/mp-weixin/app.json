@@ -1,42 +1,14 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/money/goods_pay3",
-    "pages/order/createOrder3",
-    "pages/money/goods_pay2",
-    "pages/order/createOrder2",
-    "pages/money/vip_pay",
-    "pages/member/center",
-    "pages/user/sign",
-    "pages/member/info",
-    "pages/member/index",
-    "pages/money/card_pay",
-    "pages/coupons/get",
-    "pages/money/pay",
     "pages/article/index",
-    "pages/money/goods_pay",
-    "pages/order/goods_order",
-    "pages/category/category",
-    "pages/commit/index",
-    "pages/commit/goods_attr",
-    "pages/coupons/list",
-    "pages/draw/index",
-    "pages/address/address",
-    "pages/address/addressManage",
-    "pages/product/product",
-    "pages/user/auth",
-    "pages/product/index",
-    "pages/set/set",
-    "pages/public/login",
-    "pages/user/user",
-    "pages/money/money",
-    "pages/order/createOrder",
-    "pages/money/paySuccess"
+    "pages/article/details",
+    "pages/article/videoDetails"
   ],
   "subPackages": [],
   "window": {
     "navigationBarTextStyle": "black",
-    "navigationBarTitleText": "玖和鲜果",
+    "navigationBarTitleText": "实用工具集",
     "navigationBarBackgroundColor": "#F8F8F8",
     "backgroundColor": "#F8F8F8"
   },
@@ -46,9 +18,6 @@
     }
   },
   "usingComponents": {
-    "draw": "/pages/draw/index",
-    "member": "/pages/member/center",
-    "basics": "/pages/basics/index",
-    "user": "/pages/user/user"
+    "basics": "/pages/basics/index"
   }
 }

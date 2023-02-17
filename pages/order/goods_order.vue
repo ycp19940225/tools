@@ -34,24 +34,29 @@
 								<text class="price attr-box">商品规格：{{item.goods_spec}}</text>
 							</view>
 						</view>
+
 						<view class="price-box" v-if="item.state == 2">
+							<!-- 共
+							<text class="num">7</text>件商品 -->
 							待付款
 							<text class="price">{{item.price}}</text>
 						</view>
 						<view class="price-box" v-else>
 							<!-- 共
 							<text class="num">7</text>件商品 -->
-							消耗积分
+							实付款
 							<text class="price">{{item.pay_price}}</text>
 						</view>
 						<view class="action-box b-t">
 							<text style="float: left;">创建时间：{{item.time}}</text>
-							<!-- <button class="action-btn" @click="cancelOrder(item)" v-if="item.state == 2">取消订单</button> -->
-							<button class="action-btn recom" @click="show(1, item.id)" v-if="item.state == 4">查看物流</button>
-							<!-- <button class="action-btn recom" @click="show(2, item.id)">订单详情</button> -->
+							<!-- <button class="action-btn" @click="cancelOrder(item)" v-if="item.state == 3">取消订单</button> -->
+							<!-- <button class="action-btn recom" @click="editInfo()" v-if="item.state == 3 || item.state == 4">确认收货</button> -->
+							<button class="action-btn recom" v-if="item.state == 2" @click="pay(item.id)">立即支付</button>
 						</view>
 					</view>
+
 					<uni-load-more :status="tabItem.loadingType"></uni-load-more>
+
 				</scroll-view>
 			</swiper-item>
 		</swiper>
@@ -78,14 +83,20 @@
 						orderList: []
 					},
 					{
-						state: 3,
-						text: '待发货',
+						state: 2,
+						text: '待付款',
 						loadingType: 'more',
 						orderList: []
 					},
 					{
-						state: 4,
-						text: '已发货',
+						state: 3,
+						text: '待收货',
+						loadingType: 'more',
+						orderList: []
+					},
+					{
+						state: 5,
+						text: '已完成',
 						loadingType: 'more',
 						orderList: []
 					}
@@ -119,41 +130,10 @@
 		},
 
 		methods: {
-			show(type, order_id){
-				let data = {
-					'order_id': order_id,
-				}
-				if(type == 1){
-					data.type = 1
-				}else{
-					data.type = 2
-				}
-				
-				this.$http.post('/api/order/getInfo', data).then(res => {
-					if (res.data.code != 1) {
-						uni.showToast({
-							title: res.data.info,
-							icon: 'none'
-						});
-					} else {
-						var data = res.data.data
-						if(type == 1){
-							console.log(data)
-							uni.showModal({
-								title:'查看物流',
-								content: '物流公司：' + data.express_company_title + ';\n快递单号：' + data.express_send_no
-							})
-						}else{
-							uni.showModal({
-								title:'订单详情',
-								content: data
-							})
-						}
-					}
-				}).catch(err => {
-					console.log(err);
+			pay(orderId){
+				uni.redirectTo({
+					url: '/pages/money/goods_pay?orderId=' + orderId
 				})
-				
 			},
 			//获取订单列表
 			loadData(source) {
@@ -295,17 +275,17 @@
 						stateTipColor = '#909399';
 						break;
 					case 1:
-						stateTip = '待补全';
+						stateTip = '订单待补全';
 						stateTipColor = '#909399';
 						break;
 					case 3:
-						stateTip = '待发货';
+						stateTip = '已支付待发货';
 						break;
 					case 2:
-						stateTip = '待兑换';
+						stateTip = '待支付';
 						break;
 					case 4:
-						stateTip = '已发货';
+						stateTip = '已发货待确认';
 						break;
 					case 5:
 						stateTip = '已完成';

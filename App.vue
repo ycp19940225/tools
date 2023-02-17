@@ -2,7 +2,7 @@
 	import { http } from '@/js_sdk/luch-request/index.js' // 全局挂载引入，配置相关在该index.js文件里修改
 	import {
 		httpUrl
-	} from '@/js_sdk/tools/tool.js';
+	} from '@/js_sdk/tools/tool.js'
 	export default {
 		methods:{
 			wxLogin:function(){
@@ -14,6 +14,9 @@
 							let code = loginRes.code;
 							console.log(code)
 							uni.request({
+								// config.baseUrl = 'http://www.lite_app.com' /* 根域名不同 */
+								// config.baseUrl = 'http://www.liteapp.com' /* 根域名不同 */
+							    // url: 'https://www.huanqiupaozhe.cn/api/auth/index', 
 								url: httpUrl+ '/api/auth/index', 
 							    data: {
 									'code': code
@@ -41,15 +44,13 @@
 				});
 			},
 		},
-		globalData: {
-		            showAd: 1  
-		},  
 		onLaunch: function() {
 			let _this = this;
 			uni.getStorage({
 			    key: 'userInfo',
 			    success: function (res) {
 					
+				
 			    },
 				fail() {
 					_this.wxLogin()
@@ -116,9 +117,6 @@
 
 	.icon-alipay:before {
 		content: "\e636";
-	}
-	.icon-score:before {
-		content: "\e637";
 	}
 
 	.icon-shang:before {

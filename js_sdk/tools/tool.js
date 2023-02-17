@@ -22,43 +22,14 @@ const configHandle = (config) => {
   return config
 }
 
-// const httpUrl = 'http://www.litead.com'
-const httpUrl = 'https://wqwangwangwang.mynatapp.cc';
-
-
-
-const showLoading = (message) => {
-  if (wx.showLoading) {
-    // 基础库 1.1.0 微信6.5.6版本开始支持，低版本需做兼容处理
-    wx.showLoading({
-      title: message,
-      mask: true
-    });
-  } else {
-    // 低版本采用Toast兼容处理并将时间设为20秒以免自动消失
-    wx.showToast({
-      title: message,
-      icon: 'loading',
-      mask: true,
-      duration: 20000
-    });
-  }
-}
- 
-const hideLoading = () => {
-  if (wx.hideLoading) {
-    // 基础库 1.1.0 微信6.5.6版本开始支持，低版本需做兼容处理
-    wx.hideLoading();
-  } else {
-    wx.hideToast();
-  }
-}
+// const httpUrl = 'http://www.lite_app.com'
+// const httpUrl = 'http://www.liteapp.com'
+// const httpUrl = 'https://www.huanqiupaozhe.cn'
+const httpUrl = 'https://www.caucasuseducation.cn';
 
 export {
   setTokenStorage,
   getTokenStorage,
   configHandle,
-  httpUrl,
-  showLoading,
-  hideLoading
+  httpUrl
 }

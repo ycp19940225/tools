@@ -1,6 +1,0 @@
-{
-  "navigationBarTitleText": "储值卡充值",
-  "usingComponents": {
-    "uni-number-box": "/components/uni-number-box/uni-number-box"
-  }
-}
