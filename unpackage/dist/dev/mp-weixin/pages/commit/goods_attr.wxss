@@ -1,0 +1,22 @@
+
+.check_box {
+	padding: 1em;
+	margin: 1em;
+}
+.product_detail {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	padding: 4px 8px;
+	background-color: #fff;
+}
+.attr_item {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: row;
+	        flex-direction: row;
+}
+

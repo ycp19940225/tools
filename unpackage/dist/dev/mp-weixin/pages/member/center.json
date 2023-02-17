@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "会员礼品专区",
+  "usingComponents": {
+    "mescroll-uni": "/components/mescroll-uni/mescroll-uni"
+  }
+}

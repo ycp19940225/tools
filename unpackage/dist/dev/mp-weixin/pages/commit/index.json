@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "订单填写",
+  "usingComponents": {
+    "uni-popup": "/components/uni-popup/uni-popup"
+  }
+}

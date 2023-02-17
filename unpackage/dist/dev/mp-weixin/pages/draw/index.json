@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "每日抽奖",
+  "usingComponents": {
+    "lottery-draw": "/components/SJ-LotteryDraw/SJ-LotteryDraw",
+    "uni-notice-bar": "/components/uni-notice-bar/uni-notice-bar",
+    "u-parse": "/components/gaoyia-parse/parse"
+  }
+}

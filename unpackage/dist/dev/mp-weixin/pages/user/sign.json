@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "每日签到",
+  "usingComponents": {
+    "list-cell": "/components/mix-list-cell",
+    "mescroll-uni": "/components/mescroll-uni/mescroll-uni"
+  }
+}
